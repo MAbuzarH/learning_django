@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>templates basic</title>
+</head>
+<body>
+  <h1>This is templates basic</h1>
+  <!-- this is a comment which show in source code -->
+   {% comment %} this is not shown in source code 
+   {% endcomment %}
+   {# third and single line comment #}
+
+   <p>Well come to home page</p>
+   {% comment %} single variable {% endcomment %}
+   <p>Name:{{name}}</p>
+   <p>
+    Age:{{age}}
+   </p>
+   {% comment %} list  {% endcomment %}
+   <p>
+    First Skill:{{skills.0}}
+   
+   </p>
+   <p>
+     all skills:{{skills}}
+   </p>
+
+   {% comment %} object attributes {% endcomment %}
+   <p>
+     User name in OBJ:{{user.username}}
+   </p>
+   <p>
+     User age in OBJ:{{user.user_age}}
+   </p>
+
+   {% comment %} dictnory access {% endcomment %}
+   <h2>Blog info</h2>
+   <p>Title: {{blog.title}}</p>
+   <p>Author name: {{blog.author.name}}</p>
+   <p>Content: {{blog.content|safe}}</p>
+   <p>Content: {{blog.created_at}}</p>
+
+   {% comment %} default value {% endcomment %}
+   <p>default empty value: {{empty_value|default:"no value given"}}</p>
+   <p>default empty value: {{empty_value|default_if_none:"no value given default_if_none"}}</p>
+</body>
+</html>

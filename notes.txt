@@ -1,0 +1,15 @@
+view and Url 
+when user type any URL in browser View is responsible what user see on that URL
+view can be a function or class
+folder structure 
+project_2 #container 
+->project_2 #actual project
+->->project_2 #setting related project and other files
+->manage.py #to run and manage project
+->blog #app inside project
+
+commands :
+pip install django #install django in virtual environment
+django-admin startproject nameOfProject #creating a project
+python manage.py startapp nameOfApp #creating app in project
+python manage.py runserver #run project 

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#2 templates basic</title>
+</head>
+<body>
+  <h1>This is templates Text filter</h1>
+  {% comment %} Text filter {% endcomment %}
+  <p><b>Title (Normal):</b> {{post.title}}</p>
+  <p><b>Title (Uppercase):</b> {{post.title|upper}}</p>
+  <p><b>Title (lowercase):</b> {{post.title|lower}}</p>
+  <p><b>Title (capfirst):</b> {{post.title|capfirst}}</p>
+  <p><b>Title (trancate char):</b> {{post.title|truncatechars:10}}</p>
+  <p><b>Title (trancate word):</b> {{post.title|truncatewords:1}}</p>
+  <p><b>Title (linebreaks):</b> {{post.title|linebreaks}}</p>
+  <hr />
+  {% comment %} addition {% endcomment %}
+  <p><b>Orignal price:</b>{{post.price}}</p>
+  <p><b>Orignal price(+ 5):</b>{{post.price|add:5}}</p>
+  {% comment %} division {% endcomment %}
+  {%if post.number|divisibleby:2 %}
+  <p>{{post.number}}: is divided by 2</p>
+  {% else %}
+  <p>{{post.number}}: is not divided  by 2</p>
+  {%endif%}
+  {% comment %} list filter {% endcomment %}
+  <p><b>Tag (Normal):</b> {{post.tags}}</p>
+  <p><b>first Tag :</b> {{post.tags|first}}</p>
+  <p><b>last Tag :</b> {{post.tags|last}}</p>
+  <p><b>Total Tag :</b> {{post.tags|length}}</p>
+  <p><b>Slice Tag (first 2):</b> {{post.tags|slice:2}}</p>
+  <p><b>Join Tag (-):</b> {{post.tags|join:"-"}}</p>
+  <hr />
+  {% comment %} yes/no Plularization {% endcomment %}
+  <p>Author avaliable?:{{post.author|yesno:"yes,no,May be"}}</p>
+  <p>comments count?:{{post.comment_count}} comment{{post.comment_count|pluralize}}</p>
+  <hr />
+  {% comment %} date filter {% endcomment %}
+  <p>cretaed at:{{post.created_At}}</p>
+  <p>Formated:{{post.created_At|date:"D d M Y"}}</p>
+  <p>Time only:{{post.created_At|time:"H:i"}}</p>
+  <hr/>
+  {% comment %} Encoding and formitting {% endcomment %}
+  <p><b>Title Encoding:</b> {{post.title|urlencode}}</p>
+   <p><b>Flot formiting:</b> {{234.3456|floatformat}}</p>
+</body>
+</html>
