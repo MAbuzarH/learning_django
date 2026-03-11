@@ -1,0 +1,44 @@
+{% extends "base.html" %} 
+{% block title %}Blog page{% endblock %}
+{% block content %}
+
+  <h2>Blog us</h2>
+  {% comment %} <h2>student: {{students.name}}</h2> {% endcomment %}
+  {% regroup students by class as grouped_students %}
+  <ul>
+    {% for group in grouped_students %}
+     <li>class: {{group.grouper}}</li>
+      <ul>
+        {% for student in group.list %}
+         <li>Student name: {{student.name}}</li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
+  </ul>
+  <p>
+   progress {% widthratio 60 100 100 %} %
+  </p>
+
+  
+  {% spaceless %}
+  <div>
+    <span>this is </span>
+    <span>space less exapmle </span>
+  </div>
+  {% endspaceless %}
+
+  {% filter upper %}
+  This text is in filter in upper case{% endfilter %}
+
+  {% for student in students %}
+   <p>
+   name: {{ student.name|upper }} 
+  </p>
+  {% endfor %}
+  {% comment %} <h2>student: {{students.name}}</h2> {% endcomment %}
+  <p>
+    Our mission is to simplify the web for small businesses by building clean,
+    accessible, and user-friendly websites.
+  </p>
+
+{% endblock %}

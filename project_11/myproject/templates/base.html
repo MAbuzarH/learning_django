@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %} My site {% endblock %}</title>
+    <title>{% block title %} My title {% endblock %}</title>
     
     <!-- Link CSS inside the head -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 </head>
 <body>
-    {% include "navbar.html" %}
-
+   
     <div class="content">
         {% block content %}
+          <p>  my site</p>
         {% endblock %}
     </div>
 
     <footer>
-        <p>&copy; 2024 my site</p>
+      
     </footer>
 
     <!-- JS must have a separate closing tag -->
