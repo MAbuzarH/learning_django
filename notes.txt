@@ -9,7 +9,14 @@ project_2 #container
 ->blog #app inside project
 
 commands :
+python -m venv .venv #command to create venv
 pip install django #install django in virtual environment
 django-admin startproject nameOfProject #creating a project
 python manage.py startapp nameOfApp #creating app in project
 python manage.py runserver #run project 
+
+ORM:
+orm stand for :Object-Relational Mapping
+we pass python class object to ORM and it convert it to SQL query
+if we want to get data from SQL orm convert back to python object
+using this we can need to write less SQL and it is DB independent 

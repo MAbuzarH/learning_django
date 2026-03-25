@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>contact form</title>
+  </head>
+  <body>
+    <h1>Hello dear user!</h1>
+    <form action="{% url 'submit_contact'%}" method="POST">
+     {% csrf_token %}
+     <label for="name">Name:</label>
+     <input type="text" id="name" name="name"><br><br>
+     <label for="message">Message:</label>
+     <textarea id="message" name="message"></textarea><br><br>
+     <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
