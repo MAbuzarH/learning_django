@@ -1,41 +1,59 @@
-{% extends "todo/base.html" %}
+{% extends 'todo/base.html' %}
+
 {% block content %}
-<h2>All Tasks  List</h2>
+<h2>All Tasks</h2>
+
 <table class="table table-striped">
   <thead>
     <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Status</th>
-    <th>Actions</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Done</th>
+      <th>Created</th>
+      <th>Actions</th>
     </tr>
   </thead>
+
   <tbody>
     {% for task in tasks %}
-    <tr>
-      <td>{{task.title}}</td>
-      <td>{{task.description | linebreaks}}</td>
-      <td>
-        {% comment %} <form method="POST" action="{% url 'todo:task_toggle_complete' task.pk %}"  style="display: inline";>
-          {% csrf_token %}
-          <button type="submit" class="btn btn-sm {% if task.completed %} btn-success {% else %} btn-secondary {% endif %}">
-            {% if task.completed %}Done {%else%} Mark {% endif %}
-          </button>
-        </form> {% endcomment %}
-      </td>
-      <td>
-        {{task.created_at|date:"Y-m-d H:i" }} |
-      </td>
+      <tr>
+        <td>{{ task.title }}</td>
 
-      <td>
-        <a class="btn btn-sm btn-danger" href="{% url 'todo:task_delete' task.pk %}">Delete</a>
-         <a class="btn btn-sm btn-warning" href="{% url 'task_update' task.pk %}">Edit</a>
-      </td> 
-    </tr>
+        <td>{{ task.description|linebreaksbr }}</td>
+
+        <!-- Toggle Complete -->
+        <td>
+          <form method="post" action="{% url 'todo:task_toggle_complete' task.pk %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit"
+              class="btn btn-sm {% if task.completed %}btn-success{% else %}btn-outline-secondary{% endif %}">
+              {% if task.completed %}✔{% else %}Mark{% endif %}
+            </button>
+          </form>
+        </td>
+
+        <td>{{ task.created_at|date:"Y-m-d H:i" }}</td>
+
+        <!-- Actions -->
+        <td>
+          <!-- Edit -->
+          <a class="btn btn-sm btn-warning"
+             href="{% url 'todo:task_update' task.pk %}">
+             Edit
+          </a>
+
+          <!-- Delete (POST only) -->
+         <a class="btn btn-sm btn-danger"
+   href="{% url 'todo:task_delete' task.pk %}">
+   Delete
+</a>
+        </td>
+      </tr>
+
     {% empty %}
-    <tr>
-      <td colspan="5">No tasks available.</td>
-    </tr>
+      <tr>
+        <td colspan="5">No tasks yet.</td>
+      </tr>
     {% endfor %}
   </tbody>
 </table>
