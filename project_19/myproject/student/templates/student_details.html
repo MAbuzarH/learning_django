@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student List</title>
+</head>
+<body>
+<h1>Student details </h1>
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+       <th>email</th>
+        <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+       <tr>
+      <td>{{student.name}} </td>
+      <td>{{student.email}} </td>
+      <td>{{student.age}} </td>
+      </tr>
+  </tbody>
+</table>
+<a href="{% url 'student_list' %}">Back to student list </a>
+</body>
+</html>

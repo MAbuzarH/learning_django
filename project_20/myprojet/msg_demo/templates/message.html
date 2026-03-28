@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>All message</title>
+</head>
+<body>
+  <style>
+    .debug {color : gray}
+    .info {color :green}
+    .success {color :blue}
+    .warning {color :orange}
+    .error {color:red}
+    ul {list_style_type:none; padding:0;}
+    li {margin:5px 0}
+  </style>
+<h1>all message data</h1>
+{% if messages %}
+<ul>
+  {% for message in messages %}
+  <li class="{{message.tags}}" >{{message}}</li>
+  {% endfor %} 
+</ul>
+{% else %}
+<p>No message</p>
+{% endif %}
+</body>
+</html>
