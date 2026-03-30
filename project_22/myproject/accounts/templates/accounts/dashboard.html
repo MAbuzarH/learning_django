@@ -1,0 +1,7 @@
+
+{% extends "accounts/base.html" %}
+
+{% block content %}
+<p>Welcome to your dashboard, {{ request.user.username }}!</p>
+{% comment %} <a href="{% url 'logout_view' %}">logout</a> {% endcomment %}
+{% endblock  %}
