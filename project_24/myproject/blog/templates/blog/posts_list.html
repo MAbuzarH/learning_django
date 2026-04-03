@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>blog lists</title>
+</head>
+<body>
+<style>
+  .pagination .current{
+    color:"while"
+    border:"4px solid #3333"
+    padding:"2px 2px"
+    margin:"2px" 
+  }
+</style>
+<h1>Blog posts</h1>
+<ul>
+  {% for post in page_obj %}
+  <li>
+   <b> {{post.title}} <b>
+  </li>
+  {% endfor %}
+</ul>
+{% comment %} pagination {% endcomment %}
+<div class="pagination">
+  {% if page_obj.has_previous %}
+  <a href="?page=1">First</a>
+  <a href="?page={{page_obj.previous_page_number}}">previous</a>
+  {% endif %}
+</div>
+{% for num in page_obj.paginator.page_range %}
+{% if page_obj.number == num %}
+ <span class="current">{{num}}</span>
+ {% else %}
+ <a href="?page={{num}}">{{num}}</a>
+{% endif %}
+{% endfor %}
+{% if page_obj.has_next %}
+<a href="?page={{page_obj.next_page_number}}">Next</a>
+  <a href="?page={{page_obj.paginator.num_pages}}">Last</a>
+{% endif %}
+<p>This is a paragraph.</p>
+
+</body>
+</html>

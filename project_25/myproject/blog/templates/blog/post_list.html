@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Django search & filter</title>
+</head>
+<body>
+
+<h1>search and filter example</h1>
+<form method="get" class="search-form">
+  <input type="text" placeholder="search..." name='q' value="{{ query}}" >
+
+  <select name="category">
+    <option value="">All categories</option>
+     <option value="tech" {% if category == 'tech' %}selected{% endif %}>Tech</option>
+     <option value="news" {% if category == 'news' %}selected{% endif %}>News</option>
+     <option value="tutorial" {% if category == 'tutorial' %}selected{% endif %}>Tutorial</option>
+  </select>
+  <button type="submit">Search</button>
+</form>
+
+<br>
+<ul>
+  {% for post in posts %}
+    <li>{{ post.title }} - {{ post.category}}</li>
+  {% empty %}
+    <li>No posts found.</li>
+  {% endfor %}
+</ul>
+</body>
+</html>
